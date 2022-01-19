@@ -165,8 +165,8 @@ void loop()
 //
 ///    dwMrq(drawDayDate()   ,75,1,3);                             // addr: 3 show Hijriah date
  //   dwMrq(msgPuasa(hd_puasa,ty_puasa),75,0,4); 
-    drawAzzan(100);    // addr: 100 show Azzan
-    runningAfterAdzan(101);
+    drawAzzan(3);    // addr: 100 show Azzan
+    runningAfterAdzan(4);
    // drawImsak(101);                                            // addr: 101 show Iqomah
 //    dwMrq(drawInfo(580),50,0,102); //Message Sholat biasa       // addr: 202 show Message Sholah
 //    dwMrq(drawInfo(730),50,0,103); //Message Sholat jumat       // addr: 203 show Message Jum'at
@@ -176,20 +176,20 @@ void loop()
     // Display Control Block ===================
     // =========================================
     if(RunFinish==1) {RunSel = 2; RunFinish =0;}                      //after anim 1 set anim 2
-    if(RunFinish==2) {RunSel = 1; RunFinish =0;}                      //after anim 2 set anim 3
-    if(RunFinish==3) {RunSel = 1; RunFinish =0;}
-    if(RunFinish==3)                                                  //after anim 3 set anim 5 or anim 4 if puasa
-         {
-          if (ty_puasa!=0)  {RunSel = 4; RunFinish =0;}
-          else {RunSel = 1; RunFinish =0;}
-         }
-    if(RunFinish==3)  {RunSel = 5;  RunFinish =0;}                      //after anim 4 set anim 5
-    if(RunFinish==5)  {RunSel = 6;  RunFinish =0;}                      //after anim 5 set anim 6
-    if(RunFinish==6)  {RunSel = 8;  RunFinish =0;}                      //after anim 6 set anim 7
-  //  if(RunFinish==7)  {RunSel = 8;  RunFinish =0;}                      //after anim 7 set anim 8
-    if(RunFinish==8)  {RunSel = 9;  RunFinish =0;}                      //after anim 8 set anim 9
-    if(RunFinish==9)  {RunSel = 10; RunFinish =0;}                      //after anim 9 set anim 10
-    if(RunFinish==10) {RunSel = 1;  RunFinish =0;}                      //after anim 10 set anim 1
+    if(RunFinish==2) {RunSel = 3; RunFinish =0;}                      //after anim 2 set anim 3
+    if(RunFinish==3) {RunSel = 4; RunFinish =0;}
+//    if(RunFinish==3)                                                  //after anim 3 set anim 5 or anim 4 if puasa
+//         {
+//          if (ty_puasa!=0)  {RunSel = 4; RunFinish =0;}
+//          else {RunSel = 1; RunFinish =0;}
+//         }
+    if(RunFinish==4)  {RunSel = 1;  RunFinish =0;}                      //after anim 4 set anim 5
+//    if(RunFinish==5)  {RunSel = 6;  RunFinish =0;}                      //after anim 5 set anim 6
+//    if(RunFinish==6)  {RunSel = 8;  RunFinish =0;}                      //after anim 6 set anim 7
+//  //  if(RunFinish==7)  {RunSel = 8;  RunFinish =0;}                      //after anim 7 set anim 8
+//    if(RunFinish==8)  {RunSel = 9;  RunFinish =0;}                      //after anim 8 set anim 9
+//    if(RunFinish==9)  {RunSel = 10; RunFinish =0;}                      //after anim 9 set anim 10
+//    if(RunFinish==10) {RunSel = 1;  RunFinish =0;}                      //after anim 10 set anim 1
     
     
 //    if(RunFinish==100 and jumat )     {RunSel = 103; RunFinish = 0; reset_x = 1;}  //after Azzan Jumat (anim 100)
