@@ -92,6 +92,7 @@ int8_t          SholatNow  = -1;
 boolean         jumat      = false;
 boolean         azzan      = false;
 uint8_t         reset_x    = 0;   
+uint8_t         reset      = 4;
 
 //Other Variable
 float sholatT[8]  = {0,0,0,0,0,0,0,0};
@@ -115,6 +116,8 @@ void setup()
   { //init comunications 
     Wire.begin();
     Serial.begin(9600);
+     digitalWrite(reset,HIGH);
+     pinMode(reset,OUTPUT);
      pinMode(BUZZ, OUTPUT); 
          
     // Get Saved Parameter from EEPROM   
@@ -130,12 +133,12 @@ void setup()
 void loop()
   { 
     // Reset & Init Display State
-    updateTime();   //every time
+    update_All_data();
+    //updateTime();   //every time
     check_azzan();  //check Sholah Time for Azzan
     DoSwap  = false ;
     fType(5);  
     Disp.clear();
-    //Disp.setFont(Font5);
     
     // Timer Function every 10 Minutes
     // Up All function with Timer in this fuction
@@ -148,9 +151,8 @@ void loop()
 
 //    anim_JG(1);            // addr: 1 show date time
 //    drawSholat(1);  
-    runningTextOut(drawDayDate(),75,1); 
-    runningTextOut(drawTextOut(),75,2);                             // addr: 2 show Masjid Name
-    
+    runningTextOut(drawTextOut(),75,1);                             // addr: 2 show Masjid Name
+    runningTextOut(drawDayDate(),75,2); 
    // addr: 5 show Remander Puasa
 //    drawSholat(2);                                              // addr: 5 show sholat time
 //    dwMrq(drawTextOut()    ,75,1,1);                             // addr: 6 show Info 1
@@ -249,7 +251,7 @@ void update_All_data()
   uint8_t   date_cor = 0;
   updateTime();
   sholatCal();                                                // load Sholah Time                                         // check jadwal Puasa Besok
-  if(floatnow>sholatT[6]) {date_cor = 1;}                     // load Hijr Date + corection next day after Mhagrib 
+  if(floatnow>00.00) {date_cor = 1;}                     // load Hijr Date + corection next day after Mhagrib 
   nowH = toHijri(now.year(),now.month(),now.day(),date_cor);  // load Hijir Date
   
   if ((floatnow > (float)21) or (floatnow < (float)3.5) )    {setBrightness(15);}
@@ -269,7 +271,6 @@ void check_azzan()
                 SholatNow = i;
                 if(!azzan and (floatnow > sholatT[i]) and (floatnow < (sholatT[i]+0.03))) 
                   { 
-                    if(daynow ==6 and SholatNow ==4 and Prm.MT==1) {jumat=true;}
                     azzan =true;
                     RunSel = 100;
                   }  

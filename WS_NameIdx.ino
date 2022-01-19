@@ -83,45 +83,15 @@
 // 5. Masehi Month Name     : drawHijrDate(OutPut String)
 // 6. Masjid Name           : drawMasjidName(OutPut String)    depend on Masjid Tipe  1-Masjid 2-Musholla 3-Surau 4-Langgar
  ==============================================*/ 
-char* msgPuasa(int hd, int ty) // get sholat name from EEPROM
-    {
-      static char output[50];
-      char  hdBuff[26];
-      int locLen = (hd-1)*26;
-      memccpy_P(hdBuff,HD_Puasa+locLen  ,0,26);
-      char  tyBuff[13];
-      locLen = (ty-1)*13;
-      memccpy_P(tyBuff,TY_Puasa+locLen  ,0,13);
-      sprintf(output,"%s %s ESOK HARI" ,hdBuff,tyBuff);
-      return output;
-    }
 
 char* sholatN(int number) // get sholat name from EEPROM
     {
       static char  locBuff[8];
-      int locLen = number*8;
       sprintf(locBuff,"%s" ,sholatCall[number]);
-      //memccpy_P(locBuff,sholatN_E+locLen  ,0,8);
       return locBuff;
     }
 
-//char * DayName(int number)  // get Day Name from EEPROM
-//    {
-//      static char  locBuff[7];
-//      int locLen = (number-1)*7;
-//      memccpy_P(locBuff,DayName_E+locLen  ,0,7);
-//      return locBuff;
-//    }
-//
-//
-//char * MonthName(int number)  // get  Month Name from EEPROM
-//    {
-//      static char  locBuff[4];
-//      int   locLen = (number-1)*4;
-//      memccpy_P(locBuff,m_month_E+locLen,0,4);
-//      return locBuff;
-//    }
-//
+
 //char * drawDayDate()
 //  {
 //     // char  locBuff[20];
@@ -155,7 +125,7 @@ char * drawDayDate()
       static char  out[45];
       int   locLen = (nowH.hM-1)*11;
       memccpy_P(locBuff,h_month_E+locLen,0,11);
-      sprintf(out,"%s %s,%02d-%02d-%04d   %02d %s %dH\0",DayName(daynow),pasar[jumlahhari()%5],now.day(),now.month(),now.year(),nowH.hD,locBuff,nowH.hY);
+      sprintf(out,"%s %s %02d-%02d-%04d   %02d-%s-%dH\0",daysOfTheWeek[daynow-1],pasar[jumlahhari()%5],now.day(),now.month(),now.year(),nowH.hD,locBuff,nowH.hY);
       return out;
   }
 
