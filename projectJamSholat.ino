@@ -92,7 +92,7 @@ int8_t          SholatNow  = -1;
 boolean         jumat      = false;
 boolean         azzan      = false;
 uint8_t         reset_x    = 0;   
-uint8_t         reset      = 4;
+uint8_t         reset      = 3;
 
 //Other Variable
 float sholatT[8]  = {0,0,0,0,0,0,0,0};
@@ -119,7 +119,8 @@ void setup()
      digitalWrite(reset,HIGH);
      pinMode(reset,OUTPUT);
      pinMode(BUZZ, OUTPUT); 
-         
+     Buzzer(0);
+  //RTC.adjust(DateTime(F(__DATE__), F(__TIME__)));
     // Get Saved Parameter from EEPROM   
     updateTime();
 
@@ -134,8 +135,8 @@ void loop()
   { 
     // Reset & Init Display State
     update_All_data();
-    //updateTime();   //every time
     check_azzan();  //check Sholah Time for Azzan
+    Reset();
     DoSwap  = false ;
     fType(5);  
     Disp.clear();
@@ -151,8 +152,9 @@ void loop()
 
 //    anim_JG(1);            // addr: 1 show date time
 //    drawSholat(1);  
-    runningTextOut(drawTextOut(),75,1);                             // addr: 2 show Masjid Name
-    runningTextOut(drawDayDate(),75,2); 
+    runningTextOut(drawDayDate(),75,1); 
+    runningTextOut(drawTextOut(),75,2);                             // addr: 2 show Masjid Name
+    
    // addr: 5 show Remander Puasa
 //    drawSholat(2);                                              // addr: 5 show sholat time
 //    dwMrq(drawTextOut()    ,75,1,1);                             // addr: 6 show Info 1
