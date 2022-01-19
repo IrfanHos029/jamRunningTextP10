@@ -29,7 +29,7 @@ void drawAzzan(int DrawAdd)
             dwCtr(0,0,"ADZAN");
             fType(1);
             dwCtr(0,8,sholatN(SholatNow));
-           // Buzzer(1);
+            Buzzer(1);
           }
         else 
           { Buzzer(0);}
@@ -109,11 +109,11 @@ void runningTextOut(const char* msg, int Speed , int DrawAdd) //running teks ada
     int fullScroll = Disp.textWidth(out) + DWidth;    
     uint16_t          Tmr = millis();
 
-     // BuzzerBlink(true);
+      BuzzerBlink(true);
     if((Tmr-lsRn)> Speed)
     { lsRn = Tmr;
         if (x < fullScroll) {++x;}
-   else {  dwDone(DrawAdd); x=0; BuzzerBlink(false); return;}
+   else {  dwDone(DrawAdd); x=0; BuzzerBlink(false); digitalWrite(reset,LOW); return;}
               
         fType(EMSans8x16);  //Marquee    jam yang tampil di bawah
         Disp.drawText(DWidth - x, 0, out); 

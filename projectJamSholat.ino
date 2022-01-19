@@ -165,8 +165,8 @@ void loop()
 //
 ///    dwMrq(drawDayDate()   ,75,1,3);                             // addr: 3 show Hijriah date
  //   dwMrq(msgPuasa(hd_puasa,ty_puasa),75,0,4); 
-    drawAzzan(3);    // addr: 100 show Azzan
-    runningAfterAdzan(4);
+    drawAzzan(100);    // addr: 100 show Azzan
+    runningAfterAdzan(101);
    // drawImsak(101);                                            // addr: 101 show Iqomah
 //    dwMrq(drawInfo(580),50,0,102); //Message Sholat biasa       // addr: 202 show Message Sholah
 //    dwMrq(drawInfo(730),50,0,103); //Message Sholat jumat       // addr: 203 show Message Jum'at
@@ -176,14 +176,14 @@ void loop()
     // Display Control Block ===================
     // =========================================
     if(RunFinish==1) {RunSel = 2; RunFinish =0;}                      //after anim 1 set anim 2
-    if(RunFinish==2) {RunSel = 3; RunFinish =0;}                      //after anim 2 set anim 3
-    if(RunFinish==3) {RunSel = 4; RunFinish =0;}
+    if(RunFinish==2) {RunSel = 1; RunFinish =0;}                      //after anim 2 set anim 3
+//    if(RunFinish==3) {RunSel = 4; RunFinish =0;}
 //    if(RunFinish==3)                                                  //after anim 3 set anim 5 or anim 4 if puasa
 //         {
 //          if (ty_puasa!=0)  {RunSel = 4; RunFinish =0;}
 //          else {RunSel = 1; RunFinish =0;}
 //         }
-    if(RunFinish==4)  {RunSel = 1;  RunFinish =0;}                      //after anim 4 set anim 5
+//    if(RunFinish==4)  {RunSel = 1;  RunFinish =0;}                      //after anim 4 set anim 5
 //    if(RunFinish==5)  {RunSel = 6;  RunFinish =0;}                      //after anim 5 set anim 6
 //    if(RunFinish==6)  {RunSel = 8;  RunFinish =0;}                      //after anim 6 set anim 7
 //  //  if(RunFinish==7)  {RunSel = 8;  RunFinish =0;}                      //after anim 7 set anim 8
@@ -195,10 +195,10 @@ void loop()
 //    if(RunFinish==100 and jumat )     {RunSel = 103; RunFinish = 0; reset_x = 1;}  //after Azzan Jumat (anim 100)
 //    else if(RunFinish==100)           {RunSel = 101; RunFinish =0;}               //after Azzan Sholah (Iqomah)
         
-    if(RunFinish==100) {RunSel = 101; RunFinish =0;}       //after Iqomah(anim 101) set Message Sholah (anim 102)   
-    if(RunFinish==101) {RunSel = 405; RunFinish =0;}                  //after Message Sholah (anim 102) set Blink Sholah(anim 104) 
-    if(RunFinish==103) {RunSel = 104; RunFinish =0;}                  //after Messagw Jum'at (anim 103) set Blink Sholah(anim 104)
-    if(RunFinish==104) {RunSel = 1; RunFinish =0;}                    //after Blink Sholah back to anim 1 
+    if(RunFinish==100) {RunSel = 101; RunFinish =0;}         
+    if(RunFinish==101) {RunSel = 1; RunFinish =0;}                  
+//    if(RunFinish==103) {RunSel = 104; RunFinish =0;}                  //after Messagw Jum'at (anim 103) set Blink Sholah(anim 104)
+//    if(RunFinish==104) {RunSel = 1; RunFinish =0;}                    //after Blink Sholah back to anim 1 
 
     // =========================================
     // Swap Display if Change===================
@@ -214,14 +214,14 @@ void Disp_init()
   { Disp.setDoubleBuffer(true);
     Timer1.initialize(2000);
     Timer1.attachInterrupt(scan);
-    setBrightness(int(Prm.BL));
+    setBrightness(200);
     fType(1);  
     Disp.clear();
     Disp.swapBuffers();
     }
 
 void setBrightness(int bright)
-  { Timer1.pwm(9,255);}
+  { Timer1.pwm(9,bright);}
 
 void scan()
   { Disp.refresh();}
@@ -256,8 +256,9 @@ void update_All_data()
   if(floatnow>00.00) {date_cor = 1;}                     // load Hijr Date + corection next day after Mhagrib 
   nowH = toHijri(now.year(),now.month(),now.day(),date_cor);  // load Hijir Date
   
-  if ((floatnow > (float)21) or (floatnow < (float)3.5) )    {setBrightness(15);}
-      else                                                   {setBrightness(Prm.BL);}  
+//  if ((floatnow > (float)21) or (floatnow < (float)3.5) )    {setBrightness(15);}
+//      else                                                   {setBrightness(Prm.BL);}  
+//  }
   }
   
     
