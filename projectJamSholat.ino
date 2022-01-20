@@ -195,8 +195,8 @@ void loop()
 //    if(RunFinish==100 and jumat )     {RunSel = 103; RunFinish = 0; reset_x = 1;}  //after Azzan Jumat (anim 100)
 //    else if(RunFinish==100)           {RunSel = 101; RunFinish =0;}               //after Azzan Sholah (Iqomah)
         
-    if(RunFinish==100) {RunSel = 101; RunFinish =0;}         
-    if(RunFinish==101) {RunSel = 1; RunFinish =0;}                  
+//    if(RunFinish==100) {RunSel = 101; RunFinish =0;}         
+//    if(RunFinish==101) {RunSel = 1; RunFinish =0;}                  
 //    if(RunFinish==103) {RunSel = 104; RunFinish =0;}                  //after Messagw Jum'at (anim 103) set Blink Sholah(anim 104)
 //    if(RunFinish==104) {RunSel = 1; RunFinish =0;}                    //after Blink Sholah back to anim 1 
 

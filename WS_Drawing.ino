@@ -39,7 +39,8 @@ void drawAzzan(int DrawAdd)
     if ((Tmr-lsRn)>2000 and (ct > ct_limit))
       {dwDone(DrawAdd);
        ct = 0;
-       Buzzer(0);}
+       Buzzer(0);
+       RunSel = 101;  }
   }
 
   void BuzzerBlink(bool state){
