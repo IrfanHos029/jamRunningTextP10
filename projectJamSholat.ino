@@ -152,9 +152,9 @@ void loop()
 
 //    anim_JG(1);            // addr: 1 show date time
 //    drawSholat(1);  
-    runningTextOut(drawDayDate(),75,1); 
-    runningTextOut(drawTextOut(),75,2);                             // addr: 2 show Masjid Name
-    
+//    runningTextOut(drawDayDate(),75,1); 
+//    runningTextOut(drawTextOut(),75,2);                             // addr: 2 show Masjid Name
+    drawSholat(1);
    // addr: 5 show Remander Puasa
 //    drawSholat(2);                                              // addr: 5 show sholat time
 //    dwMrq(drawTextOut()    ,75,1,1);                             // addr: 6 show Info 1
@@ -175,7 +175,7 @@ void loop()
     // =========================================
     // Display Control Block ===================
     // =========================================
-    if(RunFinish==1) {RunSel = 2; RunFinish =0;}                      //after anim 1 set anim 2
+    if(RunFinish==1) {RunSel = 1; RunFinish =0;}                      //after anim 1 set anim 2
     if(RunFinish==2) {RunSel = 1; RunFinish =0;}                      //after anim 2 set anim 3
 //    if(RunFinish==3) {RunSel = 4; RunFinish =0;}
 //    if(RunFinish==3)                                                  //after anim 3 set anim 5 or anim 4 if puasa
