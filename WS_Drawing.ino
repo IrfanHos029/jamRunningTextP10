@@ -114,7 +114,7 @@ void runningTextOut(const char* msg, int Speed , int DrawAdd) //running teks ada
     if((Tmr-lsRn)> Speed)
     { lsRn = Tmr;
         if (x < fullScroll) {++x;}
-   else {  dwDone(DrawAdd); x=0; BuzzerBlink(false); RunSel=1; return;}
+   else {  dwDone(DrawAdd); x=0; BuzzerBlink(false); digitalWrite(reset,LOW); return;}
               
         fType(EMSans8x16);  //Marquee    jam yang tampil di bawah
         Disp.drawText(DWidth - x, 0, out); 
