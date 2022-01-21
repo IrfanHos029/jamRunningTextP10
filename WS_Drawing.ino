@@ -1,16 +1,6 @@
 // =========================================
 // Drawing Content Block====================    
 // =========================================
-
-
-
-
-
-
-
-
-
-
 void drawAzzan(int DrawAdd)
   {
     // check RunSelector
@@ -212,6 +202,7 @@ void runningTextOut(const char* msg, int Speed , int DrawAdd) //running teks ada
 
   }
 
+/*
   void setingS(int sNum,int c)
   {
     ///////////////jam gedhe///////////
@@ -245,6 +236,7 @@ uint16_t y;
     fType(1); dwCtr(33,9,BuffTime);   //jadwal sholatnya
     DoSwap = true;          
 }
+*/
 
 void drawHari(int DrawAdd)
   {
