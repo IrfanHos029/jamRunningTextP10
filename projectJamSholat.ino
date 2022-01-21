@@ -72,12 +72,16 @@ typedef struct
     uint16_t  hY;
   } hijir_date;
 
-   float latitude = -7.238816115709593;
-   float longitude = 112.75318149040366;
+   float latitude = -7.2590879;
+   float longitude = 112.7479862;
 //   float latitude = 7.14;
 //   float longitude = 112.45;
    float timezone = +7;
-   
+ //  -7.2590879 112.7479862
+ //  -7.2575885,112.7517465
+//-7.2755979,112.5725937
+//-7.2961121,112.7365015
+
  // Variable by Structure     
 struct_param    Prm;
 hijir_date      nowH;   

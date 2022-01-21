@@ -11,10 +11,11 @@
 // Main Function
 void sholatCal()
   {
-    float EJD = E_Julian_date(now.year(),now.month(),now.day(),Prm.L_LO);
+    float EJD = E_Julian_date(now.year(),now.month(),now.day(),longitude);
     float Decl=Dql(EJD);
     float EqOfTime=EqT(EJD);
-    Pray_Time(Prm.L_TZ, Prm.L_LA, Prm.L_LO,Prm.L_AL,Decl, EqOfTime );
+    //Pray_Time(Prm.L_TZ, Prm.L_LA, Prm.L_LO,Prm.L_AL,Decl, EqOfTime );
+    Pray_Time(timezone,latitude, longitude,5,Decl, EqOfTime );
   }
 
 //Julian Date at GMT mid day
